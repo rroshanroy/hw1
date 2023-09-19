@@ -13,7 +13,7 @@ def briefMatch(desc1,desc2,ratio):
 
 
 
-def plotMatches(im1,im2,matches,locs1,locs2):
+def plotMatches(im1,im2,matches,locs1,locs2, i):
 
     fig, ax = plt.subplots(nrows=1, ncols=1)
     im1 = cv2.cvtColor(im1, cv2.COLOR_BGR2GRAY)
@@ -21,6 +21,7 @@ def plotMatches(im1,im2,matches,locs1,locs2):
     plt.axis('off')
     skimage.feature.plot_matches(ax,im1,im2,locs1,locs2,matches,matches_color='r',only_matches=True)
     plt.show()
+    plt.savefig(f'pics/matches_rot_{i}.png')
     return
 
 

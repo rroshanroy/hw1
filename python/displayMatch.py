@@ -20,10 +20,14 @@ def displayMatched(opts, image1, image2):
     #display matched features
     plotMatches(image1, image2, matches, locs1, locs2)
 
+
+
 if __name__ == "__main__":
 
     opts = get_opts()
-    image1 = cv2.imread('../data/cv_cover.jpg')
-    image2 = cv2.imread('../data/cv_desk.png')
+    image1 = cv2.imread('data/cv_cover.jpg')
+    image2 = cv2.imread('data/cv_desk.png')
+
+    #rot_image1 = 
 
     displayMatched(opts, image1, image2)
