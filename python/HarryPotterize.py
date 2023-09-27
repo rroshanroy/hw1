@@ -14,7 +14,9 @@ from helper import plotMatches
 def warpImage(start, target, transform, opts):
 
     matches, locs1, locs2 = matchPics(start, target, opts)
+    
     # flipping the dimensions as per FAQ
+    # code taken from: https://stackoverflow.com/questions/4857927/swapping-columns-in-a-numpy-array
     locs1[:, 0], locs1[:, 1] = locs1[:, 1], locs1[:, 0].copy()
     locs2[:, 0], locs2[:, 1] = locs2[:, 1], locs2[:, 0].copy()
     

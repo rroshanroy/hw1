@@ -21,8 +21,8 @@ if __name__=='__main__':
     warped_frames = []
 
     prev_time = time.time()
-    #for i in range(min(ar_frames.shape[0], bk_frames.shape[0])):
-    for i in range(2):
+    for i in range(min(ar_frames.shape[0], bk_frames.shape[0])):
+    #for i in range(10):
         bk_frame = bk_frames[i]
         ar_frame = ar_frames[i]
 
@@ -41,6 +41,7 @@ if __name__=='__main__':
             continue
 
         warped_frames.append(warp_ar)
+        #cv2.imwrite(f'ar_warp/frame{i}_img.jpg', warp_ar)
         # cv2.imwrite(f'{save_dir}/frame_{i+1}.jpg', warp_ar)
 
         if i%10==0 :
@@ -48,10 +49,10 @@ if __name__=='__main__':
             print(f"On frame {i+1}. Runtime: {cur_time-prev_time}s per 10 frames")
             prev_time = cur_time
 
-    out = cv2.VideoWriter("ar_warp/final_warped.mp4v", cv2.VideoWriter_fourcc(*'mp4v'), 30, (bk_frames[0].shape[1], bk_frames[0].shape[0]))
+    out = cv2.VideoWriter("ar_warp/final_warped.mp4", cv2.VideoWriter_fourcc(*'mp4v'), 30, (bk_frames[0].shape[1], bk_frames[0].shape[0]))
     for i, frame in enumerate(warped_frames):
         out.write(frame) # frame is a numpy.ndarray with shape (1280, 720, 3)
-        cv2.imwrite(f'test{i}_img.jpg', frame)
+        #cv2.imwrite(f'ar_warp/test{i}_img.jpg', frame)
     out.release()
 
     print("Done")

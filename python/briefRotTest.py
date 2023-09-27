@@ -12,7 +12,6 @@ def rotTest(opts):
 
     # TODO: Read the image and convert to grayscale, if necessary
     img1 = cv2.imread('data/cv_cover.jpg')
-    #img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 
     match_dict = {}
     data = []

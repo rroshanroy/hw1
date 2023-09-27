@@ -25,8 +25,9 @@ if __name__=='__main__':
     H, _ = computeH_ransac(locs1[matches[:, 0]], locs2[matches[:, 1]], opts)
 
     comp_img = compositeH(H, pan_left, aug_pan_right)#, large_canvas=True)
-    # cv2.imwrite('pics/pano_left2right_nocrop.jpg', comp_img)
 
+    # Calculating panoramic image crop by removing black pixel borders
+    # inspired from: https://stackoverflow.com/questions/13538748/crop-black-edges-with-opencv
     gray_comp_img = cv2.cvtColor(comp_img,cv2.COLOR_BGR2GRAY)
     _,thresh = cv2.threshold(gray_comp_img,1,255,cv2.THRESH_BINARY)
 
